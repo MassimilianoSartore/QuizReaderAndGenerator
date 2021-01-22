@@ -191,6 +191,7 @@ public class QuizGeneratorActivity extends AppCompatActivity {
             {
                 try {
                     LocalTime myObj = LocalTime.parse(editTextTimer.getText().toString());
+                    Log.i("t", editTextTimer.getText().toString() + " "+myObj.toSecondOfDay() );
                     quizString+="TIMER#"+myObj.toSecondOfDay()+"#|";
                     timerAdded=true;
                     Toast.makeText(this, "Timer added", Toast.LENGTH_LONG).show();

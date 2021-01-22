@@ -150,12 +150,10 @@ public class QuizReaderActivity extends AppCompatActivity {
                         case "TIMER":
                             secondTimerStart = secondTimer = Integer.parseInt(tokens.nextToken());
                             timer = true;
-                            Log.i("rr", secondTimer+" ");
-                            int p1 = secondTimer % 60;
-                            int p2 = secondTimer / 60;
-                            int p3 = p2 % 60;
-                            p2 = p2 / 60;
-                            textViewTimer.setText( LocalTime.of(p3,p2,p1).toString());
+                            int hours = secondTimer / 3600;
+                            int minutes = (secondTimer % 3600) / 60;
+                            int seconds = secondTimer % 60;
+                            textViewTimer.setText(hours+":"+minutes+":"+seconds);
                             break;
                         default:
                             exitFun("Error: file corrupted");
@@ -193,12 +191,10 @@ public class QuizReaderActivity extends AppCompatActivity {
                         if (secondTimer < secondTimerStart / 4) {
                             textViewTimer.setTextColor(Color.RED);
                         }
-                        int p1 = secondTimer % 60;
-                        int p2 = secondTimer / 60;
-                        int p3 = p2 % 60;
-                        p2 = p2 / 60;
-                        Log.i("tag", p1 + " " + p2 + " " + p3 + " ");
-                        textViewTimer.setText(LocalTime.of(p3, p2, p1).toString());
+                        int hours = secondTimer / 3600;
+                        int minutes = (secondTimer % 3600) / 60;
+                        int seconds = secondTimer % 60;
+                        textViewTimer.setText(hours+":"+minutes+":"+seconds);
                     }
                     else
                     {
@@ -233,7 +229,7 @@ public class QuizReaderActivity extends AppCompatActivity {
 
     private void closeTimer()
     {
-        if(timer)
+        if(cTimer!=null)
         {
             cTimer.onFinish();
         }
