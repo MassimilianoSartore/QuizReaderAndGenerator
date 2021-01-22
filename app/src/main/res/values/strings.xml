@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Quiz Reader and Generator</string>
+    <string name="get_result">Get Result</string>
+    <string name="empty_title">Empty Title</string>
+    <string name="closebutton1">closeButton</string>
+    <string name="quiz_name">Quiz Name</string>
+    <string name="add_question">Add Question</string>
+    <string name="answer">Answer</string>
+    <string name="question1">Question</string>
+    <string name="checkbox_2">CheckBox 2</string>
+    <string name="add_question1">Add question</string>
+    <string name="multiple_choice_quiz_question">Multiple Choice Quiz Question</string>
+    <string name="closed_question">Closed Question</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="question2">Question</string>
+    <string name="add_question2">Add question</string>
+    <string name="question3">Question</string>
+    <string name="checkbox_1">CheckBox 1</string>
+    <string name="checkbox_3">CheckBox 3</string>
+    <string name="yes_or_no_question">Yes or No Question</string>
+    <string name="closebutton">closeButton</string>
+    <string name="save">Save</string>
+    <string name="load_quiz">Load Quiz</string>
+    <string name="create_quiz">Create Quiz</string>
+    <string name="made_with_by_massimiliano_sartore">Made with ❤ by Massimiliano Sartore</string>
+</resources>

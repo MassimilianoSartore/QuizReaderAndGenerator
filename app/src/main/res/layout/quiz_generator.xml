@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClickClose"
+        android:orientation="horizontal">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardCornerRadius="8dp"
+            android:layout_margin="5dp"
+            android:backgroundTint="#F44336"
+            android:elevation="10dp">
+
+            <ImageView
+                android:id="@+id/closeButton"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:contentDescription="@string/closebutton"
+                android:onClick="onClickClose"
+                app:srcCompat="@drawable/ic_baseline_close_24" />
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/editTextQuizName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="@string/quiz_name"
+                    android:inputType="textAutoComplete"
+                    android:autofillHints="" />
+
+                <Button
+                    android:id="@+id/buttonSaveQuiz"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="onClickSaveButton"
+                    android:text="@string/save" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/yes_or_no_question" />
+
+            <EditText
+                android:id="@+id/editTextYesorNoQuestion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/question1"
+                android:inputType="textAutoComplete"
+                android:autofillHints="" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/radioButtonYes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/yes" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/no" />
+
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/buttonAddYesOrNoQ"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:onClick="onClickAddYesOrNo"
+                android:text="@string/add_question2" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/multiple_choice_quiz_question" />
+
+            <EditText
+                android:id="@+id/editTextMCQ"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="@string/question2"
+                android:inputType="textAutoComplete"
+                android:autofillHints="" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBoxMCQ1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <EditText
+                    android:id="@+id/editTextMCQC1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="@string/checkbox_1"
+                    android:inputType="textAutoComplete"
+                    android:autofillHints="" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBoxMCQ2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <EditText
+                    android:id="@+id/editTextMCQC2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="@string/checkbox_2"
+                    android:inputType="textAutoComplete"
+                    android:autofillHints="" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBoxMCQ3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <EditText
+                    android:id="@+id/editTextMCQC3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="@string/checkbox_3"
+                    android:inputType="textAutoComplete"
+                    android:autofillHints="" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/buttonAddMCQ"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:onClick="onClickAddMCQ"
+                android:text="@string/add_question1" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/closed_question" />
+
+            <EditText
+                android:id="@+id/editTextCQQ"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="@string/question3"
+                android:inputType="textAutoComplete"
+                android:autofillHints="" />
+
+            <EditText
+                android:id="@+id/editTextCQA"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="@string/answer"
+                android:inputType="textAutoComplete"
+                android:autofillHints="" />
+
+            <Button
+                android:id="@+id/buttonAddCQ"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:onClick="onClickAddCQ"
+                android:text="@string/add_question" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Quiz Timer" />
+
+            <EditText
+                android:id="@+id/editTextTimer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="hh:mm:ss"
+                android:inputType="time" />
+
+            <Button
+                android:id="@+id/buttonAddTimer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:onClick="onClickAddTimer"
+                android:text="Add Timer" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
