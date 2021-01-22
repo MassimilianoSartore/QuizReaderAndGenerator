@@ -75,6 +75,10 @@ public class QuizReaderActivity extends AppCompatActivity {
         String tmp = "";
         try
         {
+            /*
+             *this fun iterate for all char in commands until a | if found, after that all the commands
+             *stored inside tmp will be tokenize and used to create the right object
+             */
             for (int j=1; j<commands.length()-1; j++)
             {
                 if (commands.charAt(j)=='|' || j==commands.length()-2)
@@ -235,6 +239,8 @@ public class QuizReaderActivity extends AppCompatActivity {
         }
     }
 
+    /*
+    * this fun calculate the final result of the quiz*/
     private void result()
     {
         result = 0;

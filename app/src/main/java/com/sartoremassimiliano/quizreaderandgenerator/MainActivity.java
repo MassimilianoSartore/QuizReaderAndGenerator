@@ -40,8 +40,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.addCategory(Intent.CATEGORY_OPENABLE);
         intent.setType("text/plain");
-        startActivityForResult(Intent.createChooser(intent,
-                "Load a file from directory"), REQUEST_CODE_SEARCH);
+        startActivityForResult(Intent.createChooser(intent, "Load a file from directory"), REQUEST_CODE_SEARCH);
     }
 
     @Override
