@@ -202,7 +202,8 @@ public class QuizReaderActivity extends AppCompatActivity {
                     }
                     else
                     {
-                        textViewTimer.setText("00:00:00");
+                        textViewTimer.setText("0:0:0");
+                        result();
                     }
                 }
                 public void onFinish() {
