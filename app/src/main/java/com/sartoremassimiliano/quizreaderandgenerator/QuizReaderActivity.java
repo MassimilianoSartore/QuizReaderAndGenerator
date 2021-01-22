@@ -27,6 +27,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.StringTokenizer;
 
 public class QuizReaderActivity extends AppCompatActivity {
@@ -156,7 +157,7 @@ public class QuizReaderActivity extends AppCompatActivity {
                             int hours = secondTimer / 3600;
                             int minutes = (secondTimer % 3600) / 60;
                             int seconds = secondTimer % 60;
-                            textViewTimer.setText(hours+":"+minutes+":"+seconds);
+                            textViewTimer.setText(String.format(Locale.getDefault(), "%02d:%02d:%02d",hours , minutes, seconds));
                             break;
                         default:
                             exitFun("Error: file corrupted");
@@ -187,6 +188,7 @@ public class QuizReaderActivity extends AppCompatActivity {
             cTimer = new CountDownTimer((secondTimerStart+1)*1000, 1000) {
 
                 @RequiresApi(api = Build.VERSION_CODES.O)
+                @Override
                 public void onTick(long millisUntilFinished) {
                     secondTimer--;
                     if(secondTimer>=1) {
@@ -197,15 +199,17 @@ public class QuizReaderActivity extends AppCompatActivity {
                         int hours = secondTimer / 3600;
                         int minutes = (secondTimer % 3600) / 60;
                         int seconds = secondTimer % 60;
-                        textViewTimer.setText(hours+":"+minutes+":"+seconds);
+
+                        textViewTimer.setText(String.format(Locale.getDefault(), "%02d:%02d:%02d",hours , minutes, seconds));
                     }
                     else
                     {
-                        textViewTimer.setText("0:0:0");
-                        result();
+                        textViewTimer.setText("00:00:00");
                     }
                 }
+                @Override
                 public void onFinish() {
+                    result();
                 }
             }.start();
         }
@@ -214,29 +218,21 @@ public class QuizReaderActivity extends AppCompatActivity {
 
     public void onClickResult(View v)
     {
-        closeTimer();
+        cTimer.cancel();
         result();
     }
 
     public void onClickClose(View v)
     {
-        closeTimer();
+        cTimer.cancel();
         this.finish();
     }
 
     private void exitFun(String toastText)
     {
-        closeTimer();
+        cTimer.cancel();
         Toast.makeText(getApplicationContext(), toastText , Toast.LENGTH_LONG).show();
         this.finish();
-    }
-
-    private void closeTimer()
-    {
-        if(cTimer!=null)
-        {
-            cTimer.onFinish();
-        }
     }
 
     /*
