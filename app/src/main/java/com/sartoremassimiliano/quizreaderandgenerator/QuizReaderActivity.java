@@ -190,22 +190,15 @@ public class QuizReaderActivity extends AppCompatActivity {
                 @RequiresApi(api = Build.VERSION_CODES.O)
                 @Override
                 public void onTick(long millisUntilFinished) {
+                    timer=true;
+                    if (secondTimer < secondTimerStart / 4) {
+                        textViewTimer.setTextColor(Color.RED);
+                    }
+                    int hours = secondTimer / 3600;
+                    int minutes = (secondTimer % 3600) / 60;
+                    int seconds = secondTimer % 60;
                     secondTimer--;
-                    if(secondTimer>=1) {
-                        timer=true;
-                        if (secondTimer < secondTimerStart / 4) {
-                            textViewTimer.setTextColor(Color.RED);
-                        }
-                        int hours = secondTimer / 3600;
-                        int minutes = (secondTimer % 3600) / 60;
-                        int seconds = secondTimer % 60;
-
-                        textViewTimer.setText(String.format(Locale.getDefault(), "%02d:%02d:%02d",hours , minutes, seconds));
-                    }
-                    else
-                    {
-                        textViewTimer.setText("00:00:00");
-                    }
+                    textViewTimer.setText(String.format(Locale.getDefault(), "%02d:%02d:%02d",hours , minutes, seconds));
                 }
                 @Override
                 public void onFinish() {
