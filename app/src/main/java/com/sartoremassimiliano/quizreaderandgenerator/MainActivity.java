@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(Intent.createChooser(intent,
                 "Load a file from directory"), REQUEST_CODE_SEARCH);
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -73,13 +74,10 @@ public class MainActivity extends AppCompatActivity {
             Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
 
-    /**
-     * Checks if the app has permission to write to device storage
-     *
-     * If the app does not has permission then the user will be prompted to grant permissions
-     *
-     * @param activity
-     */
+    public void onClickCredit(View v){
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/MassimilianoSartore")));
+    }
+
     public static void verifyStoragePermissions(Activity activity) {
         // Check if we have write permission
         int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.READ_EXTERNAL_STORAGE);

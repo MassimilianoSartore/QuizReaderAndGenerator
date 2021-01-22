@@ -5,10 +5,10 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -29,7 +29,6 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class QuizReaderActivity extends AppCompatActivity {
 
@@ -41,10 +40,9 @@ public class QuizReaderActivity extends AppCompatActivity {
     private List<Quiz> list;
     private TextView textViewTimer;
     private int secondTimer;
-    private Thread thread;
     private boolean timer;
     private int secondTimerStart;
-    private final AtomicBoolean running = new AtomicBoolean(false);
+    private CountDownTimer cTimer;
 
     private class Quiz
     {
@@ -175,49 +173,6 @@ public class QuizReaderActivity extends AppCompatActivity {
             {
                 exitFun("Error: empty quiz!");
             }
-            if(timer)
-            {
-                thread = new Thread() {
-
-                    @Override
-                    public void run() {
-                        try {
-                            while (!thread.isInterrupted()) {
-                                Thread.sleep(1000);
-                                runOnUiThread(new Runnable() {
-                                    @RequiresApi(api = Build.VERSION_CODES.O)
-                                    @Override
-                                    public void run() {
-                                        secondTimer--;
-                                        if(secondTimer==0)
-                                        {
-                                            textViewTimer.setText("00:00:00");
-                                            result();
-                                        }
-                                        else
-                                        {
-                                            if(secondTimer>0){
-                                                if(secondTimer < secondTimerStart/4)
-                                                {
-                                                    textViewTimer.setTextColor(Color.RED);
-                                                }
-                                                int p1 = secondTimer % 60;
-                                                int p2 = secondTimer / 60;
-                                                int p3 = p2 % 60;
-                                                p2 = p2 / 60;
-                                                Log.i("tag", p1 +" " +p2 +" "+p3 +" " );
-                                                textViewTimer.setText( LocalTime.of(p3,p2,p1).toString());
-                                            }
-                                        }
-                                    }
-                                });
-                            }
-                        } catch (InterruptedException e) {
-                        }
-                    }
-                };
-                thread.start();
-            }
         }catch (Exception ex)
         {
             exitFun("Error: file corrupted");
@@ -225,22 +180,65 @@ public class QuizReaderActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onStart()
+    {
+        super.onStart();
+        if(timer) {
+            cTimer = new CountDownTimer((secondTimerStart+1)*1000, 1000) {
+
+                @RequiresApi(api = Build.VERSION_CODES.O)
+                public void onTick(long millisUntilFinished) {
+                    secondTimer--;
+                    if(secondTimer>=1) {
+                        timer=true;
+                        if (secondTimer < secondTimerStart / 4) {
+                            textViewTimer.setTextColor(Color.RED);
+                        }
+                        int p1 = secondTimer % 60;
+                        int p2 = secondTimer / 60;
+                        int p3 = p2 % 60;
+                        p2 = p2 / 60;
+                        Log.i("tag", p1 + " " + p2 + " " + p3 + " ");
+                        textViewTimer.setText(LocalTime.of(p3, p2, p1).toString());
+                    }
+                    else
+                    {
+                        textViewTimer.setText("00:00:00");
+                    }
+                }
+                public void onFinish() {
+                }
+            }.start();
+        }
+    }
+
+
     public void onClickResult(View v)
     {
-        thread.currentThread().interrupt();
+        closeTimer();
         result();
     }
 
     public void onClickClose(View v)
     {
-        thread.currentThread().interrupt();
+        closeTimer();
         this.finish();
     }
 
     private void exitFun(String toastText)
     {
+        closeTimer();
         Toast.makeText(getApplicationContext(), toastText , Toast.LENGTH_LONG).show();
         this.finish();
+    }
+
+    private void closeTimer()
+    {
+        if(timer)
+        {
+            cTimer.onFinish();
+        }
     }
 
     private void result()
@@ -330,7 +328,6 @@ public class QuizReaderActivity extends AppCompatActivity {
         MyIntent.putExtra("result",Integer.toString(result));
         MyIntent.putExtra("quizN",Integer.toString(quizN));
         startActivity(MyIntent);
-        thread.currentThread().interrupt();
         this.finish();
     }
 

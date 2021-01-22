@@ -19,8 +19,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.OutputStream;
 import java.io.PrintStream;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 
 public class QuizGeneratorActivity extends AppCompatActivity {

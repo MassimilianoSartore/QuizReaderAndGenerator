@@ -23,5 +23,6 @@
     <string name="save">Save</string>
     <string name="load_quiz">Load Quiz</string>
     <string name="create_quiz">Create Quiz</string>
-    <string name="made_with_by_massimiliano_sartore">Made with ❤ by Massimiliano Sartore</string>
+    <string name="made_with_by">Made with ❤ by</string>
+    <string name="massimiliano_sartore">Massimiliano Sartore</string>
 </resources>
