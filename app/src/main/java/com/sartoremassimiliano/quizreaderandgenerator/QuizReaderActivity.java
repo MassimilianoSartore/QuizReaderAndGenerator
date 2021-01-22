@@ -33,8 +33,6 @@ import java.util.StringTokenizer;
 public class QuizReaderActivity extends AppCompatActivity {
 
     private Uri filepath;
-    private String commands;
-    private LinearLayout.LayoutParams layoutParams;
     private int quizN;
     private int result;
     private List<Quiz> list;
@@ -71,8 +69,8 @@ public class QuizReaderActivity extends AppCompatActivity {
         Intent ActIntent = getIntent();
         LinearLayout linearLayout = findViewById(R.id.LinearLayoutReader);
         filepath = Uri.parse(ActIntent.getStringExtra("filepath"));
-        commands = readFromFile();
-        layoutParams  = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1);
+        String commands = readFromFile();
+        LinearLayout.LayoutParams layoutParams  = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1);
         list=new ArrayList<>();
         String tmp = "";
         try

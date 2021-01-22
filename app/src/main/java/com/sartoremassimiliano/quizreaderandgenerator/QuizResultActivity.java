@@ -14,22 +14,16 @@ import com.airbnb.lottie.LottieAnimationView;
 
 public class QuizResultActivity extends AppCompatActivity {
 
-    private LottieAnimationView backToSchoolAnimation;
-    private LottieAnimationView partyAnimation;
-    private LottieAnimationView laptopWorking;
-    private TextView textViewResult;
-    private LinearLayout.LayoutParams layoutParams;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent ActIntent = getIntent();
         setContentView(R.layout.quiz_result);
-        laptopWorking = findViewById(R.id.laptopWorking);
-        backToSchoolAnimation = findViewById(R.id.backToSchool);
-        partyAnimation = findViewById(R.id.danceParty);
-        textViewResult = findViewById(R.id.textViewResult);
-        layoutParams  = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1);
+        LottieAnimationView laptopWorking = findViewById(R.id.laptopWorking);
+        LottieAnimationView backToSchoolAnimation = findViewById(R.id.backToSchool);
+        LottieAnimationView partyAnimation = findViewById(R.id.danceParty);
+        TextView textViewResult = findViewById(R.id.textViewResult);
+        LinearLayout.LayoutParams layoutParams  = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1);
         float result =Float.parseFloat(ActIntent.getStringExtra("result"));
         float quizN = Float.parseFloat(ActIntent.getStringExtra("quizN"));
         double percentage = result/quizN*100.0;

@@ -160,18 +160,12 @@ public class QuizGeneratorActivity extends AppCompatActivity {
 
     private static boolean isExternalStorageReadOnly() {
         String extStorageState = Environment.getExternalStorageState();
-        if (Environment.MEDIA_MOUNTED_READ_ONLY.equals(extStorageState)) {
-            return true;
-        }
-        return false;
+        return Environment.MEDIA_MOUNTED_READ_ONLY.equals(extStorageState);
     }
 
     private static boolean isExternalStorageAvailable() {
         String extStorageState = Environment.getExternalStorageState();
-        if (Environment.MEDIA_MOUNTED.equals(extStorageState)) {
-            return true;
-        }
-        return false;
+        return Environment.MEDIA_MOUNTED.equals(extStorageState);
     }
 
     public void onClickClose(View v)
@@ -191,7 +185,7 @@ public class QuizGeneratorActivity extends AppCompatActivity {
     public void onClickAddTimer(View v)
     {
         EditText editTextTimer = findViewById(R.id.editTextTimer);
-        if(timerAdded==false)
+        if(!timerAdded)
         {
             if (!editTextTimer.getText().toString().equals(""))
             {
