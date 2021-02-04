@@ -58,7 +58,7 @@ public class QuizGeneratorActivity extends AppCompatActivity {
         RadioButton radioButtonYes = findViewById(R.id.radioButtonYes);
         RadioButton radioButtonNo = findViewById(R.id.radioButtonNo);
         StringBuilder command = new StringBuilder();
-        if (!question.toString().matches("") && (radioButtonNo.isChecked() || radioButtonYes.isChecked())) {
+        if (!(question.toString()=="") && (radioButtonNo.isChecked() || radioButtonYes.isChecked())) {
             command.append("QYN#" + question.getText().toString());
             if (radioButtonNo.isChecked()) {
                 command.append("#0#|");
@@ -79,11 +79,11 @@ public class QuizGeneratorActivity extends AppCompatActivity {
     public void onClickAddCQ(View v)
     {
         StringBuilder command = new StringBuilder();
-        EditText editTextCQA = findViewById(R.id.editTextCQA);
-        EditText editTextCQQ = findViewById(R.id.editTextCQQ);
-        if(!editTextCQA.getText().toString().matches("") && !editTextCQA.getText().toString().matches(" ") && !editTextCQQ.getText().toString().matches("") && !editTextCQQ.getText().toString().matches(" "))
+        String editTextCQA = ((EditText)findViewById(R.id.editTextCQA)).getText().toString();
+        String editTextCQQ = ((EditText)findViewById(R.id.editTextCQQ)).getText().toString();
+        if(!editTextCQA.matches("") && !editTextCQA.matches(" ") && !editTextCQQ.matches("") && !editTextCQQ.matches(" "))
         {
-            command.append("CQ#"+editTextCQQ.getText().toString()+"#"+editTextCQA.getText().toString()+"#|");
+            command.append("CQ#"+editTextCQQ+"#"+editTextCQA+"#|");
             quizString += command.toString();
             Toast.makeText(this, "Question added", Toast.LENGTH_LONG).show();
         }
@@ -102,33 +102,7 @@ public class QuizGeneratorActivity extends AppCompatActivity {
         {
             StringBuilder command = new StringBuilder();
             command.append("MCQ#"+editTextMCQ.getText().toString());
-            switch (counterCB)
-            {
-                case 1:
-                    command.append("#1#");
-                    break;
-                case 2:
-                    command.append("#2#");
-                    break;
-                case 3:
-                    command.append("#3#");
-                    break;
-                case 4:
-                    command.append("#4#");
-                    break;
-                case 5:
-                    command.append("#5#");
-                    break;
-                case 6:
-                    command.append("#6#");
-                    break;
-                case 7:
-                    command.append("#7#");
-                    break;
-                default:
-                    Toast.makeText(this, "Error: something is missing!", Toast.LENGTH_LONG).show();
-                    return;
-            }
+            command.append("#"+ counterCB +"#");
             command.append(editTextMCQC1.getText().toString()+"#");
             command.append(editTextMCQC2.getText().toString()+"#");
             command.append(editTextMCQC3.getText().toString()+"#|");

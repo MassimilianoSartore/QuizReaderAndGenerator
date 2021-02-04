@@ -39,6 +39,7 @@ public class QuizReaderActivity extends AppCompatActivity {
     private TextView textViewTimer;
     private int secondTimer;
     private boolean timer;
+    private boolean timerStarted;
     private int secondTimerStart;
     private CountDownTimer cTimer;
 
@@ -53,7 +54,7 @@ public class QuizReaderActivity extends AppCompatActivity {
         private int result;
         private String answer;
         private EditText editTextCQA;
-    };
+    }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -62,6 +63,7 @@ public class QuizReaderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.quiz_reader);
         timer = false;
+        timerStarted = false;
         result=0;
         quizN = 0;
         TextView textViewQuizName = findViewById(R.id.textViewQuizTitle);
@@ -76,7 +78,7 @@ public class QuizReaderActivity extends AppCompatActivity {
         try
         {
             /*
-             *this fun iterate for all char in commands until a | if found, after that all the commands
+             *this fun iterate for all char in commands until a | is found, after that all the commands
              *stored inside tmp will be tokenize and used to create the right object
              */
             for (int j=1; j<commands.length()-1; j++)
@@ -176,7 +178,7 @@ public class QuizReaderActivity extends AppCompatActivity {
         }catch (Exception ex)
         {
             exitFun("Error: file corrupted");
-            Log.i("tag","e",ex);
+            Log.i("tag","Error:",ex);
         }
     }
 
@@ -184,13 +186,13 @@ public class QuizReaderActivity extends AppCompatActivity {
     protected void onStart()
     {
         super.onStart();
-        if(timer) {
+        if(timer && !timerStarted) {
+            timerStarted=true;
             cTimer = new CountDownTimer((secondTimerStart+1)*1000, 1000) {
 
                 @RequiresApi(api = Build.VERSION_CODES.O)
                 @Override
                 public void onTick(long millisUntilFinished) {
-                    timer=true;
                     if (secondTimer < secondTimerStart / 4) {
                         textViewTimer.setTextColor(Color.RED);
                     }
@@ -208,24 +210,41 @@ public class QuizReaderActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed()
+    {
+        exitFun("Exam closed");
+    }
 
     public void onClickResult(View v)
     {
-        cTimer.cancel();
+        checkTimer();
         result();
     }
 
     public void onClickClose(View v)
     {
-        cTimer.cancel();
-        this.finish();
+        exitFun("Exam closed");
     }
 
     private void exitFun(String toastText)
     {
-        cTimer.cancel();
+        checkTimer();
         Toast.makeText(getApplicationContext(), toastText , Toast.LENGTH_LONG).show();
         this.finish();
+    }
+
+    private void checkTimer()
+    {
+        try{
+            if(timer)
+            {
+                cTimer.cancel();
+            }
+        }catch (Exception ex)
+        {
+            Toast.makeText(getApplicationContext(), "Error: something went wrong!" , Toast.LENGTH_LONG).show();
+        }
     }
 
     /*

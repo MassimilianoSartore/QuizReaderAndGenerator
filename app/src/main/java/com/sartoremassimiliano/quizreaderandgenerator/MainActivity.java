@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
             }catch (Exception ex) {
-                Toast.makeText(this, "Error during file choose!", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Error during file choice!", Toast.LENGTH_LONG).show();
                 Log.d("Main error:", ex.toString());
             }
         }
