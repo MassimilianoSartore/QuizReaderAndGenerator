@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Space;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -175,6 +176,9 @@ public class QuizReaderActivity extends AppCompatActivity {
             {
                 exitFun("Error: empty quiz!");
             }
+            Space space = new Space(this);
+            space.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 150, 1));
+            linearLayout.addView(space);
         }catch (Exception ex)
         {
             exitFun("Error: file corrupted");

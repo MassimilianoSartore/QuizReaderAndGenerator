@@ -19,7 +19,7 @@
     <string name="checkbox_1">CheckBox 1</string>
     <string name="checkbox_3">CheckBox 3</string>
     <string name="yes_or_no_question">Yes or No Question</string>
-    <string name="closebutton">closeButton</string>
+    <string name="closeButton">closeButton</string>
     <string name="save">Save</string>
     <string name="load_quiz">Load Quiz</string>
     <string name="create_quiz">Create Quiz</string>

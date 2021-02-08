@@ -24,7 +24,7 @@
                 android:id="@+id/closeButton"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:contentDescription="@string/closebutton"
+                android:contentDescription="@string/closeButton"
                 android:onClick="onClickClose"
                 app:srcCompat="@drawable/ic_baseline_close_24" />
         </androidx.cardview.widget.CardView>
