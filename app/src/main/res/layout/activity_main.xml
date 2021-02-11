@@ -36,21 +36,48 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/button6"
-                    android:layout_width="wrap_content"
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:onClick="onClickButtonReadQuiz"
-                    android:text="@string/load_quiz" />
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/orange"
+                    android:elevation="10dp"
+                    app:cardCornerRadius="8dp">
 
-                <Button
-                    android:id="@+id/button5"
-                    android:layout_width="wrap_content"
+                    <TextView
+                        android:id="@+id/textViewLoadQuiz"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:onClick="onClickButtonReadQuiz"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:text="@string/load_quiz"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:onClick="onClickButtonCreateQuiz"
-                    android:text="@string/create_quiz" />
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/orange"
+                    android:elevation="10dp"
+                    app:cardCornerRadius="8dp">
+
+                    <TextView
+                        android:id="@+id/textViewCreateQuiz"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:onClick="onClickButtonCreateQuiz"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:text="@string/create_quiz"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+                </androidx.cardview.widget.CardView>
 
             </LinearLayout>
 
@@ -71,8 +98,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center"
             android:gravity="center"
-            android:paddingLeft="5dp"
-            android:paddingRight="2dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="2dp"
             android:text="@string/made_with_by" />
 
         <TextView
@@ -81,8 +108,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center|center_horizontal"
             android:onClick="onClickCredit"
-            android:paddingLeft="2dp"
-            android:paddingRight="5dp"
+            android:paddingStart="2dp"
+            android:paddingEnd="5dp"
             android:text="@string/massimiliano_sartore" />
     </LinearLayout>
 
