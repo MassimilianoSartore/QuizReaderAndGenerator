@@ -6,7 +6,7 @@
 > **Last version:**  v0.1.2
 
 ## 💡Introduction
-App delevoped for the final 7.3 exam
+App developed for the final 7.3 exam
 
 This app is a Quiz reader and generator, that means you can create a quiz and share it with other people
 
